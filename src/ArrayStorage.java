@@ -3,6 +3,7 @@
  */
 public class ArrayStorage {
     Resume[] storage = new Resume[10000];
+    private int size;
 
     void clear() {
         for (int i = 0; i < storage.length; i++) {
@@ -13,27 +14,31 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                storage[i] = r;
-                break;
-            } else if (storage[i].toString() == r.toString()) {
-                System.out.println("UIDD " + r + " уже существует");
-                break;
+
+        boolean repeat = false;
+
+        if (size == 0) {
+            storage[size] = r;
+            size++;
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (storage[i].toString() == r.toString()) {
+                    System.out.println("UIDD " + r + " уже существует");
+                    repeat = true;
+                    break;
+                }
+            }
+            if (repeat == false) {
+                storage[size] = r;
+                size++;
             }
         }
     }
 
     Resume get(String uuid) {
-        int size = 0;
+
         int foundElement = 0;
 
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                break;
-            }
-            size++;
-        }
         for (int i = 0; i < size; i++) {
             if (storage[i].toString() == uuid) {
                 foundElement = i;
@@ -44,15 +49,6 @@ public class ArrayStorage {
     }
 
     void delete(String uuid) {
-        int size = 0;
-
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                break;
-            }
-            size++;
-        }
-
         for (int i = 0; i < size; i++) {
             if (storage[i].toString() == uuid) {
                 for (int j = i + 1; j <= size; j++) {
@@ -60,6 +56,7 @@ public class ArrayStorage {
                     storage[j] = null;
                     i++;
                 }
+                size--;
                 break;
             }
         }
@@ -69,15 +66,6 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll() {
-        int size = 0;
-
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                break;
-            }
-            size++;
-        }
-
         Resume[] storageFill = new Resume[size];
         for (int i = 0; i < storageFill.length; i++) {
             if (storage[i] == null) {
@@ -89,14 +77,6 @@ public class ArrayStorage {
     }
 
     int size() {
-        int size = 0;
-
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                break;
-            }
-            size++;
-        }
         return size;
     }
 }
