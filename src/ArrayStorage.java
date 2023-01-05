@@ -26,7 +26,7 @@ public class ArrayStorage {
                     break;
                 }
             }
-            if (repeat == false) {
+            if (!repeat) {
                 storage[size] = r;
                 size++;
             }
@@ -38,14 +38,10 @@ public class ArrayStorage {
 
         for (int i = 0; i < size; i++) {
             if (storage[i].toString() == uuid) {
-                foundElement = i;
+                return storage[i];
             }
         }
-        if (foundElement >= 0) {
-            return storage[foundElement];
-        } else {
-            return storage[size + 1];
-        }
+        return null;
     }
 
     void delete(String uuid) {
