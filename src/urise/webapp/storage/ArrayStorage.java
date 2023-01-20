@@ -73,11 +73,10 @@ public class ArrayStorage {
 
     public void update(Resume resume) {
         int index = getIndex(resume.getUuid());
-        String uuid = resume.getUuid();
         if (index >= 0) {
             storage[index] = resume;
         } else {
-            System.out.println("Uuid " + uuid + " не найден");
+            System.out.println("Uuid " + resume.getUuid() + " не найден");
         }
     }
 }
