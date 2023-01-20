@@ -71,16 +71,13 @@ public class ArrayStorage {
         return -1;
     }
 
-    public String update(Resume resume) {
+    public void update(Resume resume) {
         int index = getIndex(resume.getUuid());
         String uuid = resume.getUuid();
         if (index >= 0) {
-            resume.setUuid(resume.getUuid() + " upd");
             storage[index] = resume;
-            return "Uidd " + uuid + " обновлен";
         } else {
             System.out.println("Uuid " + uuid + " не найден");
         }
-        return "Uidd " + uuid + " не обновлен";
     }
 }
