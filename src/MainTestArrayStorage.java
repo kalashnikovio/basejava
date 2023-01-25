@@ -1,19 +1,20 @@
 import urise.webapp.model.Resume;
 import urise.webapp.storage.ArrayStorage;
+import urise.webapp.storage.SortedArrayStorage;
 
 /**
  * Test for your urise.webapp.storage.ArrayStorage implementation
  */
 public class MainTestArrayStorage {
-    static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
+    static final SortedArrayStorage ARRAY_STORAGE = new SortedArrayStorage();
 
     public static void main(String[] args) {
         Resume r1 = new Resume();
         r1.setUuid("uuid1");
         Resume r2 = new Resume();
-        r2.setUuid("uuid2");
+        r2.setUuid("uuid3");
         Resume r3 = new Resume();
-        r3.setUuid("uuid3");
+        r3.setUuid("uuid2");
 
         ARRAY_STORAGE.save(r1);
         ARRAY_STORAGE.save(r2);
@@ -27,6 +28,7 @@ public class MainTestArrayStorage {
 
         System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
 
+        ARRAY_STORAGE.sortStorage();
         printAll();
         ARRAY_STORAGE.delete(r1.getUuid());
         printAll();
