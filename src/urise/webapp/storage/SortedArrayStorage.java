@@ -6,31 +6,11 @@ import java.util.Arrays;
 
 public class SortedArrayStorage extends AbstractArrayStorage {
     @Override
-    public void save(Resume r) {
-        int index = getIndex(r.getUuid());
-
-        if (size == STORAGE_LIMIT) {
-            System.out.println("Достигнуто максимальное количество UUID");
-        } else if (index >= 0) {
-            System.out.println("UIDD " + r + " уже существует");
-        } else {
-            storage[size] = r;
-            size++;
-            sortStorage();
+    protected void deleteUsingIndex(int index) {
+        for (int i = index; i < size; i++) {
+            storage[i] = storage[i + 1];
         }
-    }
-
-    @Override
-    public void delete(String uuid) {
-        int index = getIndex(uuid);
-        if (index >= 0) {
-            storage[index] = storage[size - 1];
-            storage[size - 1] = null;
-            size--;
-            sortStorage();
-        } else {
-            System.out.println("Uuid " + uuid + " не найден");
-        }
+        size--;
     }
 
     @Override
@@ -40,16 +20,13 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
 
-    public void sortStorage() {
-        for (int k = 1; k < size; k++) {
-            Resume newElement = storage[k];
-            int index;
-            index = Arrays.binarySearch(storage, 0, k, newElement);
-            if (index < 0) {
-                index = -(index) - 1;
-            }
-            System.arraycopy(storage, index, storage, index + 1, k - index);
-            storage[index] = newElement;
+    @Override
+    protected void saveUsingIndex(int index, Resume r) {
+        if (index < 0) {
+            index = -(index) - 1;
         }
+        System.arraycopy(storage, index, storage, index + 1, size - index);
+        storage[index] = r;
+        size++;
     }
 }

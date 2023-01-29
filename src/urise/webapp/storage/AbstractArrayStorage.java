@@ -13,6 +13,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public int size() {
         return size;
     }
+
     public void clear() {
         Arrays.fill(storage, 0, size, null);
         size = 0;
@@ -40,5 +41,30 @@ public abstract class AbstractArrayStorage implements Storage {
         return storage[index];
     }
 
+    public void save(Resume r) {
+        int index = getIndex(r.getUuid());
+
+        if (size == STORAGE_LIMIT) {
+            System.out.println("Достигнуто максимальное количество UUID");
+        } else if (index >= 0) {
+            System.out.println("UIDD " + r + " уже существует");
+        } else {
+            saveUsingIndex(index, r);
+        }
+    }
+
+    public void delete(String uuid) {
+        int index = getIndex(uuid);
+        if (index >= 0) {
+            deleteUsingIndex(index);
+        } else {
+            System.out.println("Uuid " + uuid + " не найден");
+        }
+    }
+
+    protected abstract void deleteUsingIndex(int index);
+
     protected abstract int getIndex(String uuid);
+
+    protected abstract void saveUsingIndex(int index, Resume r);
 }
