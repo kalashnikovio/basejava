@@ -10,7 +10,6 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         for (int i = index; i < size; i++) {
             storage[i] = storage[i + 1];
         }
-        size--;
     }
 
     @Override
@@ -27,6 +26,5 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         }
         System.arraycopy(storage, index, storage, index + 1, size - index);
         storage[index] = r;
-        size++;
     }
 }
