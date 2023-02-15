@@ -12,12 +12,11 @@ public class ArrayStorage extends AbstractArrayStorage {
     protected void deleteUsingIndex(int index) {
         storage[index] = storage[size - 1];
         storage[size - 1] = null;
-        size--;
     }
 
     protected int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (storage[i].toString().equals(uuid)) {
+            if (uuid.equals(storage[i].getUuid())) {
                 return i;
             }
         }
@@ -27,6 +26,5 @@ public class ArrayStorage extends AbstractArrayStorage {
     @Override
     protected void saveUsingIndex(int index, Resume r) {
         storage[size] = r;
-        size++;
     }
 }
