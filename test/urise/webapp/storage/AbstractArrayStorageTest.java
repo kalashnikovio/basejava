@@ -23,7 +23,7 @@ public abstract class AbstractArrayStorageTest {
     private static final Resume RESUME_3 = new Resume(UUID_3);
     private static final Resume RESUME_4 = new Resume(UUID_4);
 
-    Resume[] expected;
+
 
     protected AbstractArrayStorageTest(Storage storage) {
         this.storage = storage;
@@ -52,8 +52,8 @@ public abstract class AbstractArrayStorageTest {
 
     @Test
     public void getAll() throws Exception {
-        expected = storage.getAll();
-        Assert.assertEquals(3, expected.length);
+        Resume[] expected = storage.getAll();
+        Assert.assertEquals(expected, storage.getAll());
     }
 
     @Test
