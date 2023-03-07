@@ -10,7 +10,7 @@ public abstract class AbstractStorage implements Storage {
 
     protected abstract void executeUpdate(Resume r, Object searchKey);
 
-    protected abstract boolean exists(Object searchKey);
+    protected abstract boolean isExist(Object searchKey);
 
     protected abstract void executeSave(Resume r, Object searchKey);
 
@@ -19,36 +19,36 @@ public abstract class AbstractStorage implements Storage {
     protected abstract void executeDelete(Object searchKey);
 
     public void update(Resume r) {
-        Object searchKey = getExistsKey(r.getUuid());
+        Object searchKey = getExistingSearchKey(r.getUuid());
         executeUpdate(r, searchKey);
     }
 
     public void save(Resume r) {
-        Object searchKey = getNotExistsKey(r.getUuid());
+        Object searchKey = getNotExistingSearchKey(r.getUuid());
         executeSave(r, searchKey);
     }
 
     public Resume get(String uuid) {
-        Object searchKey = getExistsKey(uuid);
+        Object searchKey = getExistingSearchKey(uuid);
         return executeGet(searchKey);
     }
 
     public void delete(String uuid) {
-        Object searchKey = getExistsKey(uuid);
+        Object searchKey = getExistingSearchKey(uuid);
         executeDelete(searchKey);
     }
 
-    private Object getExistsKey(String uuid) {
+    private Object getExistingSearchKey(String uuid) {
         Object Key = searchKey(uuid);
-        if (!exists(Key)) {
+        if (!isExist(Key)) {
             throw new NotExistStorageException(uuid);
         }
         return Key;
     }
 
-    private Object getNotExistsKey(String uuid) {
+    private Object getNotExistingSearchKey(String uuid) {
         Object Key = searchKey(uuid);
-        if (exists(Key)) {
+        if (isExist(Key)) {
             throw new ExistStorageException(uuid);
         }
         return Key;
