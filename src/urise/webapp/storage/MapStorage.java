@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapStorage extends AbstractStorage {
-    private Map<String, Resume> map = new HashMap<>();
+    private final Map<String, Resume> map = new HashMap<>();
 
     @Override
-    protected Object searchKey(String uuid) {
+    protected Object getSearchKey(String uuid) {
         if (map.get(uuid) == null) {
             return null;
         } else {
@@ -24,7 +24,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected boolean isExist(Object searchKey) {
-        return searchKey != null;
+        return map.containsKey(searchKey);
     }
 
     @Override

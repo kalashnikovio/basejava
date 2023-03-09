@@ -6,7 +6,7 @@ import urise.webapp.model.Resume;
 
 public abstract class AbstractStorage implements Storage {
 
-    protected abstract Object searchKey(String uuid);
+    protected abstract Object getSearchKey(String uuid);
 
     protected abstract void executeUpdate(Resume r, Object searchKey);
 
@@ -39,7 +39,7 @@ public abstract class AbstractStorage implements Storage {
     }
 
     private Object getExistingSearchKey(String uuid) {
-        Object Key = searchKey(uuid);
+        Object Key = getSearchKey(uuid);
         if (!isExist(Key)) {
             throw new NotExistStorageException(uuid);
         }
@@ -47,7 +47,7 @@ public abstract class AbstractStorage implements Storage {
     }
 
     private Object getNotExistingSearchKey(String uuid) {
-        Object Key = searchKey(uuid);
+        Object Key = getSearchKey(uuid);
         if (isExist(Key)) {
             throw new ExistStorageException(uuid);
         }
