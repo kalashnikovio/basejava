@@ -2,6 +2,9 @@ package urise.webapp;
 
 import urise.webapp.model.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResumeTestData {
     public static void main(String[] args) {
         Resume resume = new Resume("name1");
@@ -20,8 +23,12 @@ public class ResumeTestData {
         TextSection section = (TextSection) new TextSection("Аналитический склад ума, сильная логика, " +
                 "креативность, инициативность. Пурист кода и архитектуры.");
         resume.setSections(SectionType.PERSONAL, section);
-        section = (TextSection) new TextSection("Организация команды и успешная реализация Java проектов для");
-        resume.setSections(SectionType.OBJECTIVE, section);
+
+        List<String> items = new ArrayList<String>();
+        items.add("Организация команды и успешная реализация Java проектов для");
+        items.add("С 2013 года: разработка проектов Разработка Web приложения");
+        ListSection sectionList = (ListSection) new ListSection(items);
+        resume.setSections(SectionType.ACHIEVEMENT, sectionList);
 
     }
 }
