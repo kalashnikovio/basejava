@@ -56,7 +56,7 @@ public class ResumeTestData {
         ListSection sectionList = new ListSection(items);
         resume.setSections(SectionType.ACHIEVEMENT, sectionList);
 
-        items.clear();
+        items = new ArrayList<>();
         items.add("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2");
         items.add("Version control: Subversion, Git, Mercury, ClearCase, Perforce");
         items.add("DB: PostgreSQL(наследование, pgplsql, PL/Python), Redis (Jedis), H2, Oracle, MySQL, SQLite, " +
@@ -121,9 +121,25 @@ public class ResumeTestData {
             System.out.print(type.getTitle() + ": " + resume.getContact(type) + "\n");
         }
 
-//        for (SectionType type : SectionType.values()) {
-//            System.out.print(type.getTitle() + ": " + resume.getSection(type) + "\n");
-//        }
-
+        for (SectionType type : SectionType.values()) {
+            if (type == SectionType.PERSONAL || type == SectionType.OBJECTIVE) {
+                System.out.print(type.getTitle() + ": " + "\n" + resume.getSection(type));
+            } else if (type == SectionType.ACHIEVEMENT || type == SectionType.QUALIFICATIONS) {
+                System.out.println(type.getTitle() + ": ");
+                sectionList = (ListSection) resume.getSection(type);
+                items = sectionList.getItems();
+                for (String item : items) {
+                    System.out.println(item);
+                }
+            } else if (type == SectionType.EXPERIENCE) {
+                System.out.println(type.getTitle() + ": ");
+                organizationSection = (OrganizationSection) resume.getSection(type);
+                listOrganizationSection = organizationSection.getOrganizations();
+                for (Organization org : listOrganizationSection) {
+                    System.out.println(org.toString());
+                }
+            }
+            System.out.println();
+        }
     }
 }
