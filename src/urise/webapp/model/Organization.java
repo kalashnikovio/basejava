@@ -1,27 +1,22 @@
 package urise.webapp.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Organization {
     private final Link homePage;
-    private final Period period;
-
-//    private final LocalDate startDate;
-//    private final LocalDate endDate;
     private final String title;
-//    private final String description;
+    private  final List<Period> periods = new ArrayList<>();
 
     public Organization(String name, String url, LocalDate startDate, LocalDate endDate, String title, String description) {
         Objects.requireNonNull(startDate, "startDate not null");
         Objects.requireNonNull(endDate, "endDate not null");
         Objects.requireNonNull(title, "title not null");
         this.homePage = new Link(name, url);
-//        this.startDate = startDate;
-//        this.endDate = endDate;
         this.title = title;
-//        this.description = description;
-        this.period = new Period(startDate, endDate, description);
+        this.periods.add(new Period(startDate, endDate, description));
     }
 
     @Override
@@ -31,16 +26,16 @@ public class Organization {
 
         Organization that = (Organization) o;
 
-        if (!homePage.equals(that.homePage)) return false;
-        if (!period.equals(that.period)) return false;
-        return Objects.equals(title, that.title);
+        if (!Objects.equals(homePage, that.homePage)) return false;
+        if (!title.equals(that.title)) return false;
+        return periods.equals(that.periods);
     }
 
     @Override
     public int hashCode() {
-        int result = homePage.hashCode();
-        result = 31 * result + period.hashCode();
-        result = 31 * result + (title != null ? title.hashCode() : 0);
+        int result = homePage != null ? homePage.hashCode() : 0;
+        result = 31 * result + title.hashCode();
+        result = 31 * result + periods.hashCode();
         return result;
     }
 
@@ -48,8 +43,8 @@ public class Organization {
     public String toString() {
         return "Organization{" +
                 "homePage=" + homePage +
-                ", period=" + period +
                 ", title='" + title + '\'' +
+                ", periods=" + periods +
                 '}';
     }
 }

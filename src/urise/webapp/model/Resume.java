@@ -30,11 +30,11 @@ public class Resume implements Comparable<Resume> {
         return uuid;
     }
 
-    public void setContacts(ContactType type, String string) {
+    public void setContact(ContactType type, String string) {
         contacts.put(type, string);
     }
 
-    public void setSections(SectionType type, Section section) {
+    public void setSection(SectionType type, Section section) {
         sections.put(type, section);
     }
 

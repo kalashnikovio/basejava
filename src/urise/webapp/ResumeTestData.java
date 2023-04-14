@@ -10,24 +10,24 @@ public class ResumeTestData {
     public static void main(String[] args) {
         Resume resume = new Resume("Григорий Кислин");
 
-        resume.setContacts(ContactType.PHONE, "+7 495 999 99 99");
-        resume.setContacts(ContactType.MOBILE, "+7 999 999 99 99");
-        resume.setContacts(ContactType.HOME_PHONE, "+7 800 999 99 99");
-        resume.setContacts(ContactType.SKYPE, "skype:grigory.kislin");
-        resume.setContacts(ContactType.MAIL, "gkislin@yandex.ru");
-        resume.setContacts(ContactType.LINKEDIN, "LinkedIn.com");
-        resume.setContacts(ContactType.GITHUB, "GITHUB.com");
-        resume.setContacts(ContactType.STATCKOVERFLOW, "STATCKOVERFLOW.com");
-        resume.setContacts(ContactType.HOME_PAGE, "HOME_PAGE.com");
+        resume.setContact(ContactType.PHONE, "+7 495 999 99 99");
+        resume.setContact(ContactType.MOBILE, "+7 999 999 99 99");
+        resume.setContact(ContactType.HOME_PHONE, "+7 800 999 99 99");
+        resume.setContact(ContactType.SKYPE, "skype:grigory.kislin");
+        resume.setContact(ContactType.MAIL, "gkislin@yandex.ru");
+        resume.setContact(ContactType.LINKEDIN, "LinkedIn.com");
+        resume.setContact(ContactType.GITHUB, "GITHUB.com");
+        resume.setContact(ContactType.STATCKOVERFLOW, "STATCKOVERFLOW.com");
+        resume.setContact(ContactType.HOME_PAGE, "HOME_PAGE.com");
 
 
         TextSection textSection = new TextSection("Ведущий стажировок и корпоративного обучения по" +
                 " Java Web и Enterprise технологиям");
-        resume.setSections(SectionType.OBJECTIVE, textSection);
+        resume.setSection(SectionType.OBJECTIVE, textSection);
 
-        textSection = (TextSection) new TextSection("Аналитический склад ума, сильная логика, " +
+        textSection = new TextSection("Аналитический склад ума, сильная логика, " +
                 "креативность, инициативность. Пурист кода и архитектуры.");
-        resume.setSections(SectionType.PERSONAL, textSection);
+        resume.setSection(SectionType.PERSONAL, textSection);
 
         List<String> items = new ArrayList<>();
         items.add("Организация команды и успешная реализация Java проектов для сторонних заказчиков: приложения" +
@@ -54,7 +54,7 @@ public class ResumeTestData {
                 "Eport, Chronopay, Сбербанк), Белоруcсии(Erip, Osmp) и Никарагуа.");
 
         ListSection sectionList = new ListSection(items);
-        resume.setSections(SectionType.ACHIEVEMENT, sectionList);
+        resume.setSection(SectionType.ACHIEVEMENT, sectionList);
 
         items = new ArrayList<>();
         items.add("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2");
@@ -80,26 +80,26 @@ public class ResumeTestData {
         items.add("Родной русский, английский \"upper intermediate\"");
 
         sectionList = new ListSection(items);
-        resume.setSections(SectionType.QUALIFICATIONS, sectionList);
+        resume.setSection(SectionType.QUALIFICATIONS, sectionList);
 
         List<Organization> listOrganizationSection = new ArrayList<>();
-        LocalDate starDate = LocalDate.of(2013, 10, 01);
+        LocalDate starDate = LocalDate.of(2013, 10, 1);
         LocalDate endDate = LocalDate.of(9999, 12, 31);
         Organization organization = new Organization("Java Online Projects", "http://JavaOnlineProjects.com",
                 starDate, endDate, "Автор проекта.", "Создание, организация и " +
                 "проведение Java онлайн проектов и стажировок.");
         listOrganizationSection.add(organization);
 
-        starDate = LocalDate.of(2014, 10, 01);
-        endDate = LocalDate.of(2016, 01, 01);
+        starDate = LocalDate.of(2014, 10, 1);
+        endDate = LocalDate.of(2016, 01, 1);
         organization = new Organization("Wrike", "http://Wrike.com",
                 starDate, endDate, "Старший разработчик (backend).", "Проектирование и разработка " +
                 "онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, MyBatis, Guava, Vaadin, " +
                 "PostgreSQL, Redis). Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO.");
         listOrganizationSection.add(organization);
 
-        starDate = LocalDate.of(2010, 12, 01);
-        endDate = LocalDate.of(2012, 04, 01);
+        starDate = LocalDate.of(2010, 12, 1);
+        endDate = LocalDate.of(2012, 04, 1);
         organization = new Organization("RIT Center", "http://RITCenter.com",
                 starDate, endDate, "Java архитектор.", "Организация процесса разработки системы ERP " +
                 "для разных окружений: релизная политика, версионирование, ведение CI (Jenkins), миграция базы " +
@@ -112,7 +112,7 @@ public class ResumeTestData {
         listOrganizationSection.add(organization);
 
         OrganizationSection organizationSection = new OrganizationSection(listOrganizationSection);
-        resume.setSections(SectionType.EXPERIENCE, organizationSection);
+        resume.setSection(SectionType.EXPERIENCE, organizationSection);
 
 
         System.out.println(resume.getContact(ContactType.PHONE));
