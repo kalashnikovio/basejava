@@ -25,7 +25,7 @@ public class MainArray {
             }
             String param = null;
             if (params.length > 1) {
-                param = params[1].intern();
+                param = params[1].intern() ;
             }
             switch (params[0]) {
                 case "list":

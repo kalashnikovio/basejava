@@ -4,7 +4,6 @@ import urise.webapp.exception.ExistStorageException;
 import urise.webapp.exception.NotExistStorageException;
 import urise.webapp.model.Resume;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
@@ -13,40 +12,40 @@ public abstract class AbstractStorage<SK> implements Storage {
     private static final Logger LOG = Logger.getLogger(AbstractStorage.class.getName());
     protected abstract SK getSearchKey(String uuid);
 
-    protected abstract void executeUpdate(Resume r, SK searchKey);
+    protected abstract void doUpdate(Resume r, SK searchKey);
 
     protected abstract boolean isExist(SK searchKey);
 
-    protected abstract void executeSave(Resume r, SK searchKey);
+    protected abstract void doSave(Resume r, SK searchKey);
 
-    protected abstract Resume executeGet(SK searchKey);
+    protected abstract Resume doGet(SK searchKey);
 
-    protected abstract void executeDelete(SK searchKey);
+    protected abstract void doDelete(SK searchKey);
 
     protected abstract List<Resume> doGetCopyAll();
 
     public void update(Resume r) {
         LOG.info("Update " + r);
         SK searchKey = getExistingSearchKey(r.getUuid());
-        executeUpdate(r, searchKey);
+        doUpdate(r, searchKey);
     }
 
     public void save(Resume r) {
         LOG.info("Save " + r);
         SK searchKey = getNotExistingSearchKey(r.getUuid());
-        executeSave(r, searchKey);
+        doSave(r, searchKey);
     }
 
     public Resume get(String uuid) {
         LOG.info("Get " + uuid);
         SK searchKey = getExistingSearchKey(uuid);
-        return executeGet(searchKey);
+        return doGet(searchKey);
     }
 
     public void delete(String uuid) {
         LOG.info("Update " + uuid);
         SK searchKey = getExistingSearchKey(uuid);
-        executeDelete(searchKey);
+        doDelete(searchKey);
     }
 
     private SK getExistingSearchKey(String uuid) {

@@ -38,12 +38,16 @@ public class Resume implements Comparable<Resume> {
         sections.put(type, section);
     }
 
-    public String getContact(ContactType type) {
-        return contacts.get(type);
+    public void addContact(ContactType type, String value) {
+        contacts.put(type, value);
     }
 
     public Section getSection(SectionType type) {
         return sections.get(type);
+    }
+
+    public void addSection(SectionType type, Section section) {
+        sections.put(type, section);
     }
 
     @Override

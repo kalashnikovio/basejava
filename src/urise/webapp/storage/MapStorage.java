@@ -17,7 +17,7 @@ public class MapStorage extends AbstractStorage<String> {
     }
 
     @Override
-    protected void executeUpdate(Resume r, String searchKey) {
+    protected void doUpdate(Resume r, String searchKey) {
         map.replace(searchKey, r);
     }
 
@@ -27,17 +27,17 @@ public class MapStorage extends AbstractStorage<String> {
     }
 
     @Override
-    protected void executeSave(Resume r, String searchKey) {
+    protected void doSave(Resume r, String searchKey) {
         map.put(r.getUuid(), r);
     }
 
     @Override
-    protected Resume executeGet(String searchKey) {
+    protected Resume doGet(String searchKey) {
         return map.get(searchKey);
     }
 
     @Override
-    protected void executeDelete(String searchKey) {
+    protected void doDelete(String searchKey) {
         map.remove(searchKey);
     }
 

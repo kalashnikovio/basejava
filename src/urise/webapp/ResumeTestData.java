@@ -85,40 +85,42 @@ public class ResumeTestData {
         List<Organization> listOrganizationSection = new ArrayList<>();
         LocalDate starDate = LocalDate.of(2013, 10, 1);
         LocalDate endDate = LocalDate.of(9999, 12, 31);
-        Organization organization = new Organization("Java Online Projects", "http://JavaOnlineProjects.com",
-                starDate, endDate, "Автор проекта.", "Создание, организация и " +
-                "проведение Java онлайн проектов и стажировок.");
-        listOrganizationSection.add(organization);
+//        Organization organization = new Organization("Java Online Projects", "http://JavaOnlineProjects.com",
+//                new Organization.Position(new Link("Java Online Projects",
+//                        "http://JavaOnlineProjects.com"),
+//                        "Автор проекта.", starDate,  endDate,
+//                        "Создание, организация и проведение Java онлайн проектов и стажировок.") );
+//        listOrganizationSection.add(organization);
 
-        starDate = LocalDate.of(2014, 10, 1);
-        endDate = LocalDate.of(2016, 01, 1);
-        organization = new Organization("Wrike", "http://Wrike.com",
-                starDate, endDate, "Старший разработчик (backend).", "Проектирование и разработка " +
-                "онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, MyBatis, Guava, Vaadin, " +
-                "PostgreSQL, Redis). Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO.");
-        listOrganizationSection.add(organization);
-
-        starDate = LocalDate.of(2010, 12, 1);
-        endDate = LocalDate.of(2012, 04, 1);
-        organization = new Organization("RIT Center", "http://RITCenter.com",
-                starDate, endDate, "Java архитектор.", "Организация процесса разработки системы ERP " +
-                "для разных окружений: релизная политика, версионирование, ведение CI (Jenkins), миграция базы " +
-                "(кастомизация Flyway), конфигурирование системы (pgBoucer, Nginx), AAA via SSO. Архитектура БД и " +
-                "серверной части системы. Разработка интергационных сервисов: CMIS, BPMN2, 1C (WebServices), " +
-                "сервисов общего назначения (почта, экспорт в pdf, doc, html). Интеграция Alfresco JLAN для online " +
-                "редактирование из браузера документов MS Office. Maven + plugin development, Ant, Apache Commons, " +
-                "Spring security, Spring MVC, Tomcat,WSO2, xcmis, OpenCmis, Bonita, Python scripting, Unix shell " +
-                "remote scripting via ssh tunnels, PL/Python");
-        listOrganizationSection.add(organization);
+//        starDate = LocalDate.of(2014, 10, 1);
+//        endDate = LocalDate.of(2016, 01, 1);
+//        organization = new Organization("Wrike", "http://Wrike.com",
+//                starDate, endDate, "Старший разработчик (backend).", "Проектирование и разработка " +
+//                "онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, MyBatis, Guava, Vaadin, " +
+//                "PostgreSQL, Redis). Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO.");
+//        listOrganizationSection.add(organization);
+//
+//        starDate = LocalDate.of(2010, 12, 1);
+//        endDate = LocalDate.of(2012, 04, 1);
+//        organization = new Organization("RIT Center", "http://RITCenter.com",
+//                starDate, endDate, "Java архитектор.", "Организация процесса разработки системы ERP " +
+//                "для разных окружений: релизная политика, версионирование, ведение CI (Jenkins), миграция базы " +
+//                "(кастомизация Flyway), конфигурирование системы (pgBoucer, Nginx), AAA via SSO. Архитектура БД и " +
+//                "серверной части системы. Разработка интергационных сервисов: CMIS, BPMN2, 1C (WebServices), " +
+//                "сервисов общего назначения (почта, экспорт в pdf, doc, html). Интеграция Alfresco JLAN для online " +
+//                "редактирование из браузера документов MS Office. Maven + plugin development, Ant, Apache Commons, " +
+//                "Spring security, Spring MVC, Tomcat,WSO2, xcmis, OpenCmis, Bonita, Python scripting, Unix shell " +
+//                "remote scripting via ssh tunnels, PL/Python");
+//        listOrganizationSection.add(organization);
 
         OrganizationSection organizationSection = new OrganizationSection(listOrganizationSection);
         resume.setSection(SectionType.EXPERIENCE, organizationSection);
 
 
-        System.out.println(resume.getContact(ContactType.PHONE));
+//        System.out.println(resume.getContact(ContactType.PHONE));
 
         for (ContactType type : ContactType.values()) {
-            System.out.print(type.getTitle() + ": " + resume.getContact(type) + "\n");
+//            System.out.print(type.getTitle() + ": " + resume.getContact(type) + "\n");
         }
 
         for (SectionType type : SectionType.values()) {
