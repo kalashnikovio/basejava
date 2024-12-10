@@ -7,6 +7,7 @@ import urise.webapp.exception.ExistStorageException;
 import urise.webapp.exception.NotExistStorageException;
 import urise.webapp.model.*;
 
+import java.io.File;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public abstract class AbstractStorageTest {
+    protected static final File STORAGE_DIR = new File("D:\\IGOR\\JAVA\\TestSerializable");
     protected Storage storage;
 
     private static final String UUID_NOT_EXIST = "dummy";
@@ -89,7 +91,7 @@ public abstract class AbstractStorageTest {
     public void update() throws Exception {
         Resume newResume = new Resume(UUID_1, "Name5");
         storage.update(newResume);
-        Assert.assertSame(newResume, storage.get(UUID_1));
+        assertTrue(newResume.equals(storage.get(UUID_1)));
     }
 
     @Test(expected = NotExistStorageException.class)
