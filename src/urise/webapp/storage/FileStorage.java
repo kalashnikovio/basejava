@@ -2,7 +2,7 @@ package urise.webapp.storage;
 
 import urise.webapp.exception.StorageException;
 import urise.webapp.model.Resume;
-import urise.webapp.model.serializer.StreamSerializer;
+import urise.webapp.storage.serializer.StreamSerializer;
 
 import java.io.*;
 import java.util.ArrayList;

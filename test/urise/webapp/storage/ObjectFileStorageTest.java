@@ -1,6 +1,6 @@
 package urise.webapp.storage;
 
-import urise.webapp.model.serializer.ObjectStreamSerializer;
+import urise.webapp.storage.serializer.ObjectStreamSerializer;
 
 public class ObjectFileStorageTest extends AbstractStorageTest {
     public ObjectFileStorageTest() {

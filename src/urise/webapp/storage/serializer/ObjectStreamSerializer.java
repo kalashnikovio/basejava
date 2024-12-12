@@ -1,4 +1,4 @@
-package urise.webapp.model.serializer;
+package urise.webapp.storage.serializer;
 
 import urise.webapp.exception.StorageException;
 import urise.webapp.model.Resume;
