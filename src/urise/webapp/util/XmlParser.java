@@ -1,4 +1,4 @@
-package urise.webapp.storage.serializer;
+package urise.webapp.util;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

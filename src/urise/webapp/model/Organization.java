@@ -1,5 +1,7 @@
 package urise.webapp.model;
 
+import com.google.gson.annotations.JsonAdapter;
+import urise.webapp.util.JsonLocalDateAdapter;
 import urise.webapp.util.LocalDateAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -34,6 +36,14 @@ public class Organization implements Serializable {
         this.positions = positions;
     }
 
+    public Link getHomePage() {
+        return homePage;
+    }
+
+    public List<Position> getPositions() {
+        return positions;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,8 +65,10 @@ public class Organization implements Serializable {
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class Position implements Serializable {
         @XmlJavaTypeAdapter(LocalDateAdapter.class)
+        @JsonAdapter(JsonLocalDateAdapter.class)
         private LocalDate startDate;
         @XmlJavaTypeAdapter(LocalDateAdapter.class)
+        @JsonAdapter(JsonLocalDateAdapter.class)
         private LocalDate endDate;
         private String title;
         private String description;
@@ -79,8 +91,9 @@ public class Organization implements Serializable {
             this.startDate = startDate;
             this.endDate = endDate;
             this.title = title;
-            this.description = description;
+            this.description = description == null ? "" : description;
         }
+
 
         public LocalDate getStartDate() {
             return startDate;
