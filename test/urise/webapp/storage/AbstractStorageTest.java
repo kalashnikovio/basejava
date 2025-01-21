@@ -9,11 +9,9 @@ import urise.webapp.exception.NotExistStorageException;
 import urise.webapp.model.*;
 
 import java.io.File;
-import java.time.Month;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.Assert.*;
 import static urise.webapp.TestData.*;
@@ -52,9 +50,9 @@ public abstract class AbstractStorageTest {
     @Test
     public void update() throws Exception {
         Resume newResume = new Resume(UUID_1, "Name5");
-        R1.addContact(ContactType.MAIL, "mail1@google.com");
-        R1.addContact(ContactType.SKYPE, "NewSkype");
-        R1.addContact(ContactType.MOBILE, "+7 921 222-22-22");
+        R1.setContact(ContactType.MAIL, "mail1@google.com");
+        R1.setContact(ContactType.SKYPE, "NewSkype");
+        R1.setContact(ContactType.MOBILE, "+7 921 222-22-22");
         storage.update(newResume);
         assertTrue(newResume.equals(storage.get(UUID_1)));
     }
